@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  layout "main"
   def home
     if logged_in?
       @micropost = current_user.microposts.build
@@ -13,5 +14,9 @@ class StaticPagesController < ApplicationController
   end
 
   def contact
+  end
+
+  def update
+
   end
 end

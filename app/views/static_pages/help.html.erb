@@ -11,3 +11,15 @@
 <%= render :text => "sad" %>
 <%= render :partial => 'test' %>
 <%= render :partial => 'test', :layout => 'test1' %>
+
+<%= form_for(:user, :url => {:action => "update"},:builder => CustomFormBuilder) do |f|  %>
+
+  <td class="label-col" style="width:10px"><label>对接状态:</label></td>
+  <td class="data-col" style="width:60px;word-break:break-all">
+    <%= f.select :change_people, options_for_select([['Lisbon', 1], ['Madrid', 2]]) %></td>
+  </td>
+  <% cities_array = User.all.limit(1).map { |city| [city.name, city.id] } %>
+  <%= options_for_select(cities_array) %>
+  <%= options_from_collection_for_select(User.all.limit(1), :id, :name) %>
+  <%= f.submit 'go' %>
+<% end %>
