@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :products
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get 'users/new'
-
+  get    'products/index'    => 'products#index'
   root             'static_pages#home'
   get    'help'    => 'static_pages#help'
   get    'about'   => 'static_pages#about'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190314032206) do
+ActiveRecord::Schema.define(version: 20190416084135) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content",    limit: 65535
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20190314032206) do
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
   add_index "microposts", ["user_id"], name: "index_microposts_on_user_id", using: :btree
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.decimal  "price",                     precision: 10
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id", limit: 4
